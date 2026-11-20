@@ -1,0 +1,271 @@
+/* ==========================================================================
+   MATES. — DESIGN SYSTEM & STYLESHEET
+   Charte graphique inspirée du logo Mates : Vert néon volt (#C0FB18) & Dark Athletic
+   ========================================================================== */
+
+:root {
+  --mates-green: #C0FB18;
+  --mates-green-hover: #a6dc0c;
+  --mates-green-light: rgba(192, 251, 24, 0.15);
+  --mates-green-glow: rgba(192, 251, 24, 0.4);
+  --mates-bg-main: #0B0F19;
+  --mates-bg-card: #131A29;
+  --mates-bg-elevated: #1B2438;
+  --mates-border: #23304A;
+  --mates-border-hover: rgba(192, 251, 24, 0.5);
+  --mates-text-primary: #F8FAFC;
+  --mates-text-secondary: #94A3B8;
+  --mates-text-muted: #64748B;
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--mates-bg-main);
+  color: var(--mates-text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #23304a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mates-green);
+}
+
+/* Glow & Neon accents */
+.neon-glow {
+  box-shadow: 0 0 25px var(--mates-green-glow);
+}
+.neon-glow-sm {
+  box-shadow: 0 0 12px rgba(192, 251, 24, 0.25);
+}
+.neon-text-glow {
+  text-shadow: 0 0 15px rgba(192, 251, 24, 0.4);
+}
+
+.text-mates-green {
+  color: var(--mates-green);
+}
+
+.bg-mates-green {
+  background-color: var(--mates-green);
+}
+
+.border-mates-green {
+  border-color: var(--mates-green);
+}
+
+/* Gradients */
+.hero-gradient {
+  background: radial-gradient(circle at 50% 20%, rgba(192, 251, 24, 0.12) 0%, rgba(11, 15, 25, 0) 70%),
+              linear-gradient(180deg, #0b0f19 0%, #0d1320 100%);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, rgba(27, 36, 56, 0.6) 0%, rgba(19, 26, 41, 0.95) 100%);
+}
+
+/* Grille de disponibilités (Wireframes 5 & 6) */
+.availability-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .availability-grid {
+    grid-template-columns: 80px repeat(7, minmax(36px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+}
+
+.availability-cell {
+  aspect-ratio: 1.4;
+  border-radius: 8px;
+  border: 1px solid var(--mates-border);
+  background-color: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--mates-text-muted);
+}
+
+/* Wireframe: "cases actives en foncé / vert" */
+.availability-cell.active {
+  background-color: var(--mates-green);
+  border-color: var(--mates-green);
+  color: #0b0f19;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(192, 251, 24, 0.35);
+}
+
+.availability-cell.interactive {
+  cursor: pointer;
+}
+
+.availability-cell.interactive:hover {
+  border-color: var(--mates-green);
+  transform: translateY(-2px);
+}
+
+/* Boutons personnalisés */
+.btn-neon {
+  background-color: var(--mates-green);
+  color: #0b0f19;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-neon:hover {
+  background-color: var(--mates-green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(192, 251, 24, 0.4);
+}
+
+.btn-outline-neon {
+  background-color: transparent;
+  color: var(--mates-text-primary);
+  border: 1.5px solid var(--mates-border);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-outline-neon:hover {
+  border-color: var(--mates-green);
+  color: var(--mates-green);
+  background-color: rgba(192, 251, 24, 0.05);
+}
+
+/* Animations transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badges & Tags */
+.badge-sport {
+  background: rgba(192, 251, 24, 0.12);
+  color: var(--mates-green);
+  border: 1px solid rgba(192, 251, 24, 0.3);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge-level {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Cartes Sports & Mates */
+.sport-card-tile {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--mates-border);
+  background: var(--mates-bg-card);
+}
+.sport-card-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--mates-green);
+  box-shadow: 0 10px 25px -5px rgba(192, 251, 24, 0.15);
+}
+
+/* Modal dialogs */
+.modal-overlay {
+  background-color: rgba(6, 9, 15, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Toast Notification */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.toast-msg {
+  background: #1e293b;
+  border: 1px solid var(--mates-green);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ---- Rebuild additions ---- */
+.page-view:not(.hidden) { animation: fadeIn 0.3s ease-in-out; }
+.toast-msg.leaving { opacity: 0; transform: translateX(100%); transition: all 0.3s ease-out; }
+.toast-msg.error { border-color: #f43f5e; }
+button:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+:focus-visible { outline: 2px solid var(--mates-green); outline-offset: 2px; }
