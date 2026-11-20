@@ -2,8 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mates — floodlit hall at night: graphite surfaces, volt only where it means something. */
+
+@layer base {
+  html { background: #141415; color-scheme: dark; }
+  body { @apply bg-mates-dark text-fg font-sans antialiased; font-size: 15px; line-height: 1.5; }
+  :focus-visible { outline: 2px solid #C0FB18; outline-offset: 2px; border-radius: 6px; }
+  ::selection { background: #C0FB18; color: #0f0f10; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #141415; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2d; border-radius: 6px; border: 2px solid #141415; }
+}
+
 @layer components {
-  .field {
-    @apply w-full bg-mates-cardElevated border border-mates-border rounded-xl px-3.5 py-2.5 text-sm text-white transition-all placeholder:text-slate-500 focus:outline-none focus:border-mates-green;
+  .page { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .page-title { @apply text-[28px] sm:text-[32px] leading-[1.15] font-medium text-fg tracking-[-0.02em]; }
+  .page-sub { @apply text-[15px] text-fg-2 mt-2; }
+  .section-title { @apply text-xl leading-7 font-medium text-fg; }
+  .label { @apply block text-[13px] leading-5 text-fg-2 mb-2; }
+  .meta { @apply font-mono text-xs leading-4 text-fg-3 tabular-nums; }
+  .num { @apply tabular-nums; }
+
+  .card { @apply bg-mates-card border border-mates-border rounded-2xl; }
+  .tag { @apply inline-flex items-center gap-2 h-7 px-2 rounded-md bg-mates-cardElevated text-xs text-fg-2 whitespace-nowrap; }
+  .tag-strong { @apply text-fg; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 rounded-[10px] text-sm font-medium whitespace-nowrap select-none
+      transition-[background-color,border-color,color,transform] active:scale-[0.98]
+      disabled:opacity-50 disabled:pointer-events-none;
   }
+  .btn-sm { @apply h-8 px-3 text-[13px] rounded-lg; }
+  .btn-lg { @apply h-12 px-5 text-[15px] rounded-xl; }
+  .btn-primary { @apply bg-mates-green text-mates-deep hover:bg-mates-greenHover; box-shadow: inset 0 1px 0 rgba(255,255,255,0.35); }
+  .btn-secondary { @apply bg-mates-cardElevated text-fg border border-mates-border hover:bg-mates-hover; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+  .btn-ghost { @apply text-fg-2 hover:text-fg hover:bg-mates-cardElevated; }
+  .btn-danger { @apply text-bad border border-bad/30 hover:bg-bad/10; }
+  .icon-btn { @apply inline-flex items-center justify-center w-9 h-9 rounded-lg text-fg-2 hover:text-fg hover:bg-mates-cardElevated transition-colors; }
+
+  .field {
+    @apply w-full h-10 bg-mates-cardElevated border border-mates-border rounded-[10px] px-3 text-sm text-fg
+      placeholder:text-fg-3 transition-colors focus:outline-none focus:border-fg-3;
+  }
+  textarea.field { @apply h-auto py-2 leading-5; }
+  select.field { @apply pr-8; }
+
+  .nav-link { @apply h-9 px-3 inline-flex items-center rounded-lg text-sm text-fg-2 transition-colors hover:text-fg; }
+  .nav-link.is-active { @apply bg-mates-cardElevated text-fg; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+
+  .tile { @apply card p-4 flex flex-col gap-3 transition-colors hover:bg-mates-cardElevated hover:border-[#323236]; }
+  .sport-glyph { @apply inline-flex items-center justify-center w-9 h-9 rounded-lg bg-mates-cardElevated text-fg-2 flex-shrink-0; }
+  .sport-glyph svg { width: 18px; height: 18px; }
+
+  /* Signature: the free place */
+  .seat { @apply w-8 h-8 rounded-full object-cover border-2 border-mates-card flex-shrink-0 bg-mates-cardElevated; }
+  .seat-free {
+    @apply w-8 h-8 rounded-full flex-shrink-0 inline-flex items-center justify-center text-mates-green;
+    border: 1.5px dashed #C0FB18;
+  }
+}
+
+/* Weekly availability grid (one of the two volt moments) */
+.availability-grid { display: grid; grid-template-columns: 96px repeat(7, minmax(32px, 1fr)); gap: 4px; }
+.availability-head { font-size: 12px; line-height: 16px; color: #85858b; text-align: center; padding-bottom: 4px; }
+.availability-row-label { font-size: 13px; color: #a1a1a6; display: flex; align-items: center; }
+.availability-cell {
+  height: 32px; border-radius: 6px; border: 1px solid #29292c; background: #1d1d1f;
+  transition: background-color 150ms cubic-bezier(0.22, 1, 0.36, 1), border-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.availability-cell.active { background: #C0FB18; border-color: #C0FB18; }
+.availability-cell.interactive { cursor: pointer; }
+.availability-cell.interactive:hover { border-color: #85858b; }
+.availability-cell.interactive.active:hover { background: #cefc4f; }
+@media (max-width: 640px) { .availability-grid { grid-template-columns: 72px repeat(7, minmax(28px, 1fr)); } }
+
+/* Court moment */
+.court-seat { cursor: pointer; }
+.court-seat:focus-visible { outline: none; }
+.court-seat:focus-visible circle.seat-ring { stroke: #ffffff; }
+.court-seat:hover circle.seat-ring { stroke-dasharray: none; }
+
+/* Modals and toasts */
+.modal-overlay { background: rgba(10, 10, 11, 0.72); }
+.modal-overlay:not(.hidden) > * { animation: rise 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+#toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 60; display: flex; flex-direction: column; gap: 8px; }
+.toast-msg {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; max-width: 360px;
+  background: #232325; border: 1px solid #323236; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  animation: rise 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.toast-msg.leaving { opacity: 0; transform: translateY(8px); transition: opacity 200ms, transform 200ms; }
+
+/* One entrance per route */
+.page-view:not(.hidden) { animation: rise 320ms cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }

@@ -3,50 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mates. — Trouve tes partenaires de sport et réserve ton terrain</title>
-  <meta name="description" content="L'application tout-en-un qui facilite la pratique du sport amateur en groupe : trouve des mates de ton niveau, rejoins des matchs ouverts et réserve un terrain.">
+  <title>Mates — partenaires de sport et terrains à Liège, Bruxelles et Namur</title>
+  <meta name="description" content="Trouve des partenaires de ton niveau, rejoins des matchs où il manque un joueur et réserve un terrain libre à Liège, Bruxelles et Namur.">
+  <meta name="theme-color" content="#141415">
   <link rel="icon" type="image/png" href="/assets/logo-cropped.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-mates-dark text-slate-100 min-h-screen flex flex-col font-sans selection:bg-mates-green selection:text-black">
+<body class="min-h-screen flex flex-col">
 
-  <!-- EN-TÊTE / NAVIGATION -->
-  <header class="sticky top-0 z-40 bg-mates-dark/90 backdrop-blur-md border-b border-mates-border transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3 group" title="Mates. Accueil">
-        <div class="h-10 px-2 py-1 bg-slate-900/60 rounded-xl border border-mates-border flex items-center group-hover:border-mates-green transition-all">
-          <img src="/assets/logo-cropped.png" alt="Mates" class="h-8 w-auto object-contain">
-        </div>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-1 bg-mates-card/80 p-1.5 rounded-full border border-mates-border shadow-inner">
-        <a href="#home" class="nav-link px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-white text-slate-300">Accueil</a>
-        <a href="#mates" class="nav-link px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-white text-slate-300">Trouver un mate</a>
-        <a href="#sports" class="nav-link px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-white text-slate-300">
-          Sports <span class="ml-1 text-xs px-2 py-0.5 rounded-full bg-mates-green/20 text-mates-green font-bold" data-sport-count>14</span>
+  <header class="sticky top-0 z-40 bg-mates-deep/90 backdrop-blur border-b border-mates-border">
+    <div class="page h-16 flex items-center justify-between gap-6">
+      <div class="flex items-center gap-8">
+        <a href="#home" class="flex items-center" aria-label="Mates, accueil">
+          <img src="/assets/logo-cropped.png" alt="Mates" class="h-7 w-auto">
         </a>
-        <a href="#matches" class="nav-link px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-white text-slate-300">Matchs ouverts</a>
-        <a href="#uml" class="nav-link px-4 py-2 rounded-full text-xs font-semibold transition-all hover:text-mates-green text-slate-400 border border-transparent hover:border-mates-green/30">📊 Analyse & UML</a>
-      </nav>
-
-      <div class="flex items-center gap-3" id="header-user-section"></div>
-
-      <button id="mobile-menu-btn" type="button" aria-label="Menu" class="md:hidden p-2 text-slate-300 hover:text-white rounded-lg border border-mates-border">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
+        <nav class="hidden md:flex items-center gap-1" aria-label="Navigation principale">
+          <a href="#home" class="nav-link">Accueil</a>
+          <a href="#mates" class="nav-link">Trouver un mate</a>
+          <a href="#sports" class="nav-link">Sports</a>
+          <a href="#matches" class="nav-link">Matchs ouverts</a>
+          <a href="#uml" class="nav-link">Analyse UML</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2" id="header-user-section"></div>
+        <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" class="icon-btn md:hidden">
+          <i data-lucide="menu" class="w-[18px] h-[18px]"></i>
+        </button>
+      </div>
     </div>
-
-    <div id="mobile-drawer" class="md:hidden hidden bg-mates-card border-b border-mates-border px-4 py-4 space-y-2">
-      <a href="#home" class="mobile-nav-link block px-4 py-2 rounded-lg font-medium hover:bg-mates-cardElevated">Accueil</a>
-      <a href="#mates" class="mobile-nav-link block px-4 py-2 rounded-lg font-medium hover:bg-mates-cardElevated">Trouver un mate</a>
-      <a href="#sports" class="mobile-nav-link block px-4 py-2 rounded-lg font-medium hover:bg-mates-cardElevated">Les sports</a>
-      <a href="#matches" class="mobile-nav-link block px-4 py-2 rounded-lg font-medium hover:bg-mates-cardElevated">Matchs ouverts</a>
-      <a href="#uml" class="mobile-nav-link block px-4 py-2 rounded-lg font-medium text-mates-green hover:bg-mates-cardElevated">Dossier Analyse & UML</a>
-      <div id="mobile-user-links"></div>
+    <div id="mobile-drawer" class="md:hidden hidden border-t border-mates-border bg-mates-deep">
+      <div class="page py-3 flex flex-col gap-1">
+        <a href="#home" class="nav-link">Accueil</a>
+        <a href="#mates" class="nav-link">Trouver un mate</a>
+        <a href="#sports" class="nav-link">Sports</a>
+        <a href="#matches" class="nav-link">Matchs ouverts</a>
+        <a href="#uml" class="nav-link">Analyse UML</a>
+        <div id="mobile-user-links" class="flex flex-col gap-1 pt-2 mt-2 border-t border-mates-border"></div>
+      </div>
     </div>
   </header>
 
@@ -54,220 +51,180 @@
 
     <!-- 1. ACCUEIL -->
     <section id="view-home" class="page-view hidden">
-      <div class="hero-gradient relative border-b border-mates-border pt-12 pb-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mates-green/15 border border-mates-green/40 text-mates-green text-xs font-bold uppercase tracking-wider">
-                <span class="w-2 h-2 rounded-full bg-mates-green"></span>
-                <span>⚡ <span data-sport-count>14</span> sports disponibles en amateur</span>
-              </div>
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Trouve ton <span class="text-mates-green neon-text-glow">mate</span>,<br>
-                rejoins le match,<br>
-                prends le terrain.
-              </h1>
-              <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
-                L’application tout-en-un qui facilite la pratique du sport amateur en groupe,
-                ouverte aux sports collectifs et de raquette (padel, football, basket, tennis...).
-                Trouve des partenaires de ton niveau et réserve en quelques clics.
-              </p>
-              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                <a href="#mates" class="btn-neon text-base shadow-lg"><i data-lucide="search" class="w-5 h-5"></i><span>Trouver un mate</span></a>
-                <a href="#sports" class="btn-outline-neon text-base"><i data-lucide="grid" class="w-5 h-5"></i><span>Explorer les sports</span></a>
-              </div>
-              <div class="pt-6 border-t border-mates-border/60 flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm text-slate-400">
-                <div class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-mates-green"></i><span><strong class="text-white" id="stat-mates">–</strong> sportifs inscrits</span></div>
-                <div class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-mates-green"></i><span><strong class="text-white" id="stat-matches">–</strong> matchs ouverts</span></div>
-                <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-mates-green"></i><span>Liège, Bruxelles & Namur</span></div>
-              </div>
+      <div class="border-b border-mates-border">
+        <div class="page py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center lg:min-h-[calc(100vh-64px-96px)]">
+          <div class="lg:col-span-6 flex flex-col gap-6">
+            <h1 class="text-[40px] sm:text-[56px] lg:text-[64px] leading-[1.04] font-medium tracking-[-0.03em] text-fg">
+              Trouve ton mate, rejoins le match, prends le terrain
+            </h1>
+            <p class="text-lg leading-7 text-fg-2 max-w-[36rem]">
+              Des partenaires de ton niveau à Liège, Bruxelles et Namur, des matchs où il manque un joueur
+              et des terrains libres à réserver en quelques clics
+            </p>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#mates" class="btn btn-lg btn-primary"><i data-lucide="search" class="w-[18px] h-[18px]"></i><span>Trouver un mate</span></a>
+              <a href="#sports" class="btn btn-lg btn-secondary"><span>Explorer les sports</span></a>
             </div>
+            <dl class="flex flex-wrap gap-x-8 gap-y-2 pt-6 mt-2 border-t border-mates-border text-sm text-fg-2">
+              <div class="flex items-baseline gap-2"><dt class="sr-only">Joueurs</dt><dd class="num text-fg" id="stat-mates">–</dd><span>joueurs inscrits</span></div>
+              <div class="flex items-baseline gap-2"><dt class="sr-only">Matchs</dt><dd class="num text-fg" id="stat-matches">–</dd><span>matchs ouverts</span></div>
+              <div class="flex items-baseline gap-2"><dt class="sr-only">Sports</dt><dd class="num text-fg" data-sport-count>14</dd><span>sports</span></div>
+            </dl>
+          </div>
 
-            <div class="lg:col-span-5 relative">
-              <div class="relative mx-auto max-w-md">
-                <div class="absolute -inset-1 bg-gradient-to-r from-mates-green/30 to-emerald-500/20 rounded-3xl blur-2xl opacity-75"></div>
-                <div id="home-featured-match" class="relative bg-mates-card/95 border border-mates-border rounded-2xl p-6 shadow-2xl backdrop-blur-xl min-h-[220px]">
-                  <p class="text-sm text-slate-400">Chargement du prochain match…</p>
-                </div>
-              </div>
+          <div class="lg:col-span-6">
+            <div id="home-featured-match" class="card p-5 sm:p-6">
+              <p class="text-sm text-fg-3">Chargement du prochain match</p>
             </div>
           </div>
         </div>
       </div>
 
-      <section class="py-16 bg-slate-950/60 border-b border-mates-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-            <div>
-              <div class="text-xs font-bold text-mates-green tracking-widest uppercase mb-1">Catalogue officiel</div>
-              <h2 class="text-3xl font-extrabold text-white">Choisis ton terrain</h2>
-            </div>
-            <a href="#sports" class="text-sm font-semibold text-mates-green hover:underline flex items-center gap-1"><span>Voir tous les sports en détail</span><i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4" id="home-sports-grid"></div>
+      <section class="page py-16 lg:py-20">
+        <div class="flex items-end justify-between gap-4 mb-8">
+          <h2 class="page-title">Choisis ton sport</h2>
+          <a href="#sports" class="btn btn-sm btn-ghost"><span>Tous les sports</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
         </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3" id="home-sports-grid"></div>
       </section>
 
-      <section class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-16">
-            <div class="text-xs font-bold text-mates-green tracking-widest uppercase mb-2">Simplicité & Rapidité</div>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Comment ça marche ?</h2>
-            <p class="text-slate-400 mt-3">Fini le casse-tête des messages sans réponse. Trois étapes et tu es sur le terrain.</p>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-mates-card border border-mates-border rounded-2xl p-8 relative hover:border-mates-green transition-all group">
-              <div class="text-5xl font-extrabold text-slate-800 group-hover:text-mates-green/40 transition-colors mb-4">01</div>
-              <h3 class="text-xl font-bold text-white mb-2">Crée ton profil</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6">Renseigne tes sports, ton niveau réel (débutant à expert) et tes créneaux de disponibilité dans ta grille hebdomadaire.</p>
-              <div class="flex items-center gap-2 text-xs font-semibold text-mates-green"><i data-lucide="user-check" class="w-4 h-4"></i><span>Profil rapide en 1 minute</span></div>
+      <section class="border-t border-mates-border">
+        <div class="page py-16 lg:py-20">
+          <h2 class="page-title mb-10">Comment ça marche ?</h2>
+          <ol class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <li class="flex flex-col gap-3">
+              <span class="meta">01</span>
+              <h3 class="text-lg font-medium text-fg">Crée ton profil</h3>
+              <p class="text-[15px] leading-6 text-fg-2">Tes sports, ton niveau réel de débutant à expert et tes créneaux libres dans une grille de la semaine</p>
+            </li>
+            <li class="flex flex-col gap-3">
+              <span class="meta">02</span>
+              <h3 class="text-lg font-medium text-fg">Filtre</h3>
+              <p class="text-[15px] leading-6 text-fg-2">Des mates près de chez toi pour le sport et le niveau choisis, à qui tu proposes une partie en deux clics</p>
+            </li>
+            <li class="flex flex-col gap-3">
+              <span class="meta">03</span>
+              <h3 class="text-lg font-medium text-fg">Bouge</h3>
+              <p class="text-[15px] leading-6 text-fg-2">Rejoins un match où il manque un joueur, ou réserve un terrain libre et ouvre ta propre partie</p>
+            </li>
+          </ol>
+          <div class="mt-16 card p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="flex flex-col gap-1">
+              <h3 class="text-xl font-medium text-fg">Prêt à trouver ton prochain mate ?</h3>
+              <p class="text-[15px] text-fg-2">Les joueurs les plus proches de chez toi, triés par distance</p>
             </div>
-            <div class="bg-mates-card border border-mates-border rounded-2xl p-8 relative hover:border-mates-green transition-all group">
-              <div class="text-5xl font-extrabold text-slate-800 group-hover:text-mates-green/40 transition-colors mb-4">02</div>
-              <h3 class="text-xl font-bold text-white mb-2">Filtre</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6">Trouve des mates près de chez toi selon le sport et le niveau souhaité, puis envoie-leur une invitation.</p>
-              <div class="flex items-center gap-2 text-xs font-semibold text-mates-green"><i data-lucide="filter" class="w-4 h-4"></i><span>Filtres par sport, niveau et ville</span></div>
-            </div>
-            <div class="bg-mates-card border border-mates-border rounded-2xl p-8 relative hover:border-mates-green transition-all group">
-              <div class="text-5xl font-extrabold text-slate-800 group-hover:text-mates-green/40 transition-colors mb-4">03</div>
-              <h3 class="text-xl font-bold text-white mb-2">Bouge</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6">Rejoins une partie ouverte où il manque un joueur, ou réserve un terrain libre et ouvre ton propre match.</p>
-              <div class="flex items-center gap-2 text-xs font-semibold text-mates-green"><i data-lucide="play" class="w-4 h-4"></i><span>Match réservé & prêt à jouer</span></div>
-            </div>
-          </div>
-          <div class="mt-14 p-8 bg-gradient-to-r from-mates-card to-slate-900 border border-mates-border rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="space-y-1 text-center md:text-left">
-              <h4 class="text-2xl font-bold text-white">Prêt à trouver ton prochain mate ?</h4>
-              <p class="text-slate-400 text-sm">Découvre les joueurs disponibles près de chez toi.</p>
-            </div>
-            <a href="#mates" class="btn-neon whitespace-nowrap"><span>Voir les mates disponibles</span><i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+            <a href="#mates" class="btn btn-secondary"><span>Voir les mates</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
           </div>
         </div>
       </section>
     </section>
 
     <!-- 2. RECHERCHE DE MATES -->
-    <section id="view-mates" class="page-view hidden py-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-mates-border pb-6">
+    <section id="view-mates" class="page-view hidden">
+      <div class="page py-10 flex flex-col gap-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div class="text-xs font-bold text-mates-green uppercase tracking-widest mb-1">Communauté sportive</div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Trouve ton mate</h1>
-            <p class="text-slate-400 mt-2 text-sm">Découvre les profils de sportifs amateurs de ton niveau prêts à fouler le terrain.</p>
+            <h1 class="page-title">Trouve ton mate</h1>
+            <p class="page-sub">Des sportifs amateurs de ton niveau, du plus proche au plus loin</p>
           </div>
-          <div class="text-sm text-slate-400"><span id="mates-count-badge" class="font-bold text-white">0</span> mates trouvés</div>
+          <p class="text-sm text-fg-2"><span id="mates-count-badge" class="num text-fg">0</span> mates</p>
         </div>
 
-        <div class="bg-mates-card border border-mates-border rounded-2xl p-5 shadow-lg">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
-            <div>
-              <label for="filter-sport" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Sport</label>
-              <select id="filter-sport" class="field"><option value="all">Tous les sports</option></select>
-            </div>
-            <div>
-              <label for="filter-level" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Niveau <span id="filter-level-hint" class="normal-case font-normal text-slate-500">(tous sports)</span></label>
-              <select id="filter-level" class="field">
-                <option value="all">Tous les niveaux</option>
-                <option value="Débutant">Débutant</option>
-                <option value="Intermédiaire">Intermédiaire</option>
-                <option value="Confirmé">Confirmé</option>
-                <option value="Expert">Expert</option>
-              </select>
-            </div>
-            <div>
-              <label for="filter-city" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Ville</label>
-              <div class="relative">
-                <input type="text" id="filter-city" maxlength="60" placeholder="Ex : Liège, Bruxelles..." class="field pl-9">
-                <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 absolute left-3 top-3"></i>
-              </div>
-            </div>
-            <div class="flex items-end gap-2 pt-1 sm:pt-0">
-              <button type="button" data-action="reset-filters" class="w-full bg-mates-cardElevated border border-mates-border hover:border-slate-400 text-slate-300 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2">
-                <i data-lucide="rotate-ccw" class="w-4 h-4"></i><span>Réinitialiser</span>
-              </button>
+        <div class="card p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-4 items-end">
+          <div>
+            <label for="filter-sport" class="label">Sport</label>
+            <select id="filter-sport" class="field"><option value="all">Tous les sports</option></select>
+          </div>
+          <div>
+            <label for="filter-level" class="label">Niveau <span id="filter-level-hint" class="text-fg-3">tous sports</span></label>
+            <select id="filter-level" class="field">
+              <option value="all">Tous les niveaux</option>
+              <option value="Débutant">Débutant</option>
+              <option value="Intermédiaire">Intermédiaire</option>
+              <option value="Confirmé">Confirmé</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-city" class="label">Ville</label>
+            <div class="relative">
+              <i data-lucide="map-pin" class="w-4 h-4 text-fg-3 absolute left-3 top-3 pointer-events-none"></i>
+              <input type="text" id="filter-city" maxlength="60" placeholder="Liège, Bruxelles" class="field pl-9">
             </div>
           </div>
+          <button type="button" data-action="reset-filters" class="btn btn-ghost"><i data-lucide="rotate-ccw" class="w-4 h-4"></i><span>Réinitialiser</span></button>
         </div>
 
-        <div id="mates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="mates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 
-        <div id="mates-empty-state" class="hidden text-center py-16 bg-mates-card/50 rounded-2xl border border-dashed border-mates-border p-8">
-          <i data-lucide="frown" class="w-12 h-12 text-slate-500 mx-auto mb-3"></i>
-          <h3 class="text-lg font-bold text-white">Aucun mate ne correspond à ces critères</h3>
-          <p class="text-sm text-slate-400 mt-1">Essaie d'élargir ta recherche ou de changer de ville.</p>
-          <button type="button" data-action="reset-filters" class="btn-neon mt-4 text-xs py-2 px-4">Afficher tous les mates</button>
+        <div id="mates-empty-state" class="hidden card border-dashed p-12 text-center flex flex-col items-center gap-3">
+          <h3 class="text-lg font-medium text-fg">Aucun mate pour ces critères</h3>
+          <p class="text-sm text-fg-2">Élargis le niveau ou essaie une autre ville</p>
+          <button type="button" data-action="reset-filters" class="btn btn-sm btn-secondary mt-2">Afficher tous les mates</button>
         </div>
       </div>
     </section>
 
     <!-- 3. LISTE DES SPORTS -->
-    <section id="view-sports" class="page-view hidden py-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-mates-border pb-6">
+    <section id="view-sports" class="page-view hidden">
+      <div class="page py-10 flex flex-col gap-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div class="text-xs font-bold text-mates-green uppercase tracking-widest mb-1">Catalogue complet</div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Les sports</h1>
-            <p class="text-slate-400 mt-2 text-sm"><span data-sport-count>14</span> disciplines avec leurs terrains et leurs mates.</p>
+            <h1 class="page-title">Les sports</h1>
+            <p class="page-sub"><span data-sport-count>14</span> disciplines, leurs clubs partenaires et les mates qui les pratiquent</p>
           </div>
           <div class="relative w-full md:w-72">
-            <input type="text" id="search-sport-input" placeholder="Rechercher un sport..." class="field pl-9 bg-mates-card">
-            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-3"></i>
+            <i data-lucide="search" class="w-4 h-4 text-fg-3 absolute left-3 top-3 pointer-events-none"></i>
+            <input type="search" id="search-sport-input" placeholder="Rechercher" aria-label="Rechercher un sport" class="field pl-9">
           </div>
         </div>
-        <div id="all-sports-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        <div id="all-sports-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
       </div>
     </section>
 
     <!-- 4. PAGE D'UN SPORT -->
-    <section id="view-single-sport" class="page-view hidden py-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div>
-          <a href="#sports" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i><span>Retour aux sports</span></a>
+    <section id="view-single-sport" class="page-view hidden">
+      <div class="page py-10 flex flex-col gap-12">
+        <div class="flex flex-col gap-6">
+          <a href="#sports" class="btn btn-sm btn-ghost self-start -ml-3"><i data-lucide="arrow-left" class="w-4 h-4"></i><span>Sports</span></a>
+          <div id="sport-hero-banner"></div>
         </div>
-        <div id="sport-hero-banner" class="bg-gradient-to-r from-mates-card via-mates-cardElevated to-slate-900 border border-mates-border rounded-3xl p-8 relative overflow-hidden shadow-2xl"></div>
-        <div class="space-y-6">
-          <div class="flex items-center justify-between border-b border-mates-border pb-4">
-            <div>
-              <h2 id="sport-mates-title" class="text-2xl font-bold text-white">Ils pratiquent ce sport</h2>
-              <p class="text-sm text-slate-400 mt-1">Trouve un partenaire disponible pour réserver un créneau.</p>
-            </div>
+        <section class="flex flex-col gap-6">
+          <h2 id="sport-mates-title" class="section-title">Mates qui pratiquent ce sport</h2>
+          <div id="sport-mates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+        <section class="flex flex-col gap-6">
+          <div>
+            <h2 class="section-title">Clubs partenaires</h2>
+            <p class="text-sm text-fg-2 mt-1">Réserve un terrain libre et ouvre ta partie aux autres joueurs</p>
           </div>
-          <div id="sport-mates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </div>
-        <div class="space-y-6 pt-6">
-          <div class="border-b border-mates-border pb-4">
-            <h3 class="text-xl font-bold text-white">Terrains & Clubs partenaires</h3>
-            <p class="text-sm text-slate-400">Réserve un terrain libre et ouvre ton match aux autres joueurs.</p>
-          </div>
-          <div id="sport-venues-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        </div>
+          <div id="sport-venues-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
       </div>
     </section>
 
     <!-- 5. PROFIL PUBLIC -->
-    <section id="view-public-profile" class="page-view hidden py-10">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="flex items-center justify-between">
-          <a href="#mates" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i><span>Retour à la recherche</span></a>
-        </div>
-        <div id="public-identity-card" class="bg-mates-card border border-mates-border rounded-3xl p-8 relative shadow-xl"></div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div class="lg:col-span-5 bg-mates-card border border-mates-border rounded-3xl p-6 space-y-4">
-            <div class="flex items-center justify-between border-b border-mates-border pb-3">
-              <h3 class="text-lg font-bold text-white flex items-center gap-2"><i data-lucide="trophy" class="w-5 h-5 text-mates-green"></i><span>Sports pratiqués</span></h3>
-              <span class="text-xs text-slate-400 font-semibold" id="public-sports-count">0 sport</span>
+    <section id="view-public-profile" class="page-view hidden">
+      <div class="page max-w-6xl py-10 flex flex-col gap-6">
+        <a href="#mates" class="btn btn-sm btn-ghost self-start -ml-3"><i data-lucide="arrow-left" class="w-4 h-4"></i><span>Recherche</span></a>
+        <div id="public-identity-card" class="card p-6 sm:p-8"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div class="lg:col-span-5 card p-6 flex flex-col gap-4">
+            <div class="flex items-baseline justify-between">
+              <h2 class="section-title">Sports pratiqués</h2>
+              <span class="meta" id="public-sports-count">0</span>
             </div>
-            <div id="public-sports-list" class="space-y-3"></div>
+            <div id="public-sports-list" class="flex flex-col gap-2"></div>
           </div>
-          <div class="lg:col-span-7 bg-mates-card border border-mates-border rounded-3xl p-6 space-y-4">
-            <div class="border-b border-mates-border pb-3">
-              <h3 class="text-lg font-bold text-white flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-mates-green"></i><span>Grille de disponibilités</span></h3>
-              <p class="text-xs text-slate-400 mt-0.5">Les cases en vert indiquent les créneaux où ce mate est disponible pour jouer.</p>
+          <div class="lg:col-span-7 card p-6 flex flex-col gap-4">
+            <div>
+              <h2 class="section-title">Disponibilités</h2>
+              <p class="text-sm text-fg-2 mt-1">Les créneaux habituels de la semaine</p>
             </div>
-            <div class="overflow-x-auto pt-2"><div id="public-availability-matrix" class="min-w-[420px]"></div></div>
-            <div class="flex items-center gap-4 text-xs text-slate-400 pt-3 border-t border-mates-border">
-              <div class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-mates-green inline-block"></span><span class="text-slate-200">Disponible</span></div>
-              <div class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-white/5 border border-mates-border inline-block"></span><span>Indisponible</span></div>
+            <div class="overflow-x-auto"><div id="public-availability-matrix" class="min-w-[400px]"></div></div>
+            <div class="flex items-center gap-6 text-xs text-fg-3 pt-4 border-t border-mates-border">
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-mates-green"></span>Disponible</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-[#1d1d1f] border border-mates-border"></span>Indisponible</span>
             </div>
           </div>
         </div>
@@ -275,215 +232,194 @@
     </section>
 
     <!-- 6. MON PROFIL (ÉDITION) -->
-    <section id="view-edit-profile" class="page-view hidden py-10">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="flex items-center justify-between border-b border-mates-border pb-6">
-          <div>
-            <div class="text-xs font-bold text-mates-green uppercase tracking-widest mb-1">Espace personnel</div>
-            <h1 class="text-3xl font-extrabold text-white">Mon profil</h1>
-          </div>
-          <a href="#mate/me" class="btn-outline-neon text-xs py-2 px-4"><i data-lucide="eye" class="w-4 h-4"></i><span>Voir public</span></a>
+    <section id="view-edit-profile" class="page-view hidden">
+      <div class="page max-w-4xl py-10 flex flex-col gap-8">
+        <div class="flex items-end justify-between gap-4">
+          <h1 class="page-title">Mon profil</h1>
+          <a href="#mate/me" class="btn btn-sm btn-secondary"><i data-lucide="eye" class="w-4 h-4"></i><span>Voir le profil public</span></a>
         </div>
 
-        <form id="profile-edit-form" class="space-y-8" novalidate>
-          <div class="bg-mates-card border border-mates-border rounded-3xl p-6 sm:p-8 space-y-6">
-            <h2 class="text-lg font-bold text-white border-b border-mates-border pb-3 flex items-center gap-2"><i data-lucide="user" class="w-5 h-5 text-mates-green"></i><span>Identité du sportif</span></h2>
-            <div class="flex flex-col sm:flex-row items-center gap-6">
-              <img id="edit-avatar-preview" src="/assets/avatar-default.svg" alt="Photo de profil" class="w-24 h-24 rounded-full object-cover ring-4 ring-mates-border shadow-lg flex-shrink-0">
-              <div class="space-y-1.5 w-full">
-                <label for="edit-avatar-url" class="block text-xs font-bold text-slate-300 uppercase tracking-wider">Photo de profil (URL https)</label>
-                <input type="url" id="edit-avatar-url" maxlength="500" placeholder="https://..." class="field">
-                <p class="text-xs text-slate-500">Laisse vide pour utiliser l'avatar par défaut.</p>
+        <form id="profile-edit-form" class="flex flex-col gap-4" novalidate>
+          <div class="card p-6 sm:p-8 flex flex-col gap-6">
+            <h2 class="section-title">Identité</h2>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+              <img id="edit-avatar-preview" src="/assets/avatar-default.svg" alt="Photo de profil" class="w-20 h-20 rounded-full object-cover bg-mates-cardElevated flex-shrink-0">
+              <div class="w-full">
+                <label for="edit-avatar-url" class="label">Photo de profil, URL https</label>
+                <input type="url" id="edit-avatar-url" maxlength="500" placeholder="https://" class="field">
+                <p class="text-xs text-fg-3 mt-2">Laisse vide pour l'avatar par défaut</p>
               </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="edit-firstname" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Prénom</label>
-                <input type="text" id="edit-firstname" required maxlength="50" class="field">
+                <label for="edit-firstname" class="label">Prénom</label>
+                <input type="text" id="edit-firstname" required maxlength="50" autocomplete="given-name" class="field">
               </div>
               <div>
-                <label for="edit-lastname" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Nom</label>
-                <input type="text" id="edit-lastname" maxlength="50" class="field">
+                <label for="edit-lastname" class="label">Nom</label>
+                <input type="text" id="edit-lastname" maxlength="50" autocomplete="family-name" class="field">
               </div>
               <div>
-                <label for="edit-age" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Âge</label>
-                <input type="number" id="edit-age" min="14" max="99" class="field">
+                <label for="edit-age" class="label">Âge</label>
+                <input type="number" id="edit-age" min="14" max="99" class="field num">
               </div>
               <div>
-                <label for="edit-city" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Ville (+ position GPS)</label>
+                <label for="edit-city" class="label">Ville</label>
                 <div class="flex gap-2">
                   <input type="text" id="edit-city" required maxlength="60" list="city-list" class="field">
-                  <button type="button" data-action="locate-gps" title="Détecter ma position" class="bg-mates-cardElevated border border-mates-border hover:border-mates-green hover:text-mates-green text-slate-300 px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap">
-                    <i data-lucide="crosshair" class="w-4 h-4 text-mates-green"></i><span class="hidden sm:inline">GPS</span>
+                  <button type="button" data-action="locate-gps" class="btn btn-secondary px-3" title="Utiliser ma position" aria-label="Utiliser ma position">
+                    <i data-lucide="crosshair" class="w-4 h-4"></i>
                   </button>
                 </div>
-                <p id="edit-gps-status" class="text-xs text-slate-500 mt-1"></p>
+                <p id="edit-gps-status" class="text-xs text-fg-3 mt-2 min-h-4"></p>
                 <datalist id="city-list"></datalist>
               </div>
             </div>
             <div>
-              <label for="edit-bio" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Bio / Présentation <span class="normal-case font-normal text-slate-500">(500 caractères max)</span></label>
-              <textarea id="edit-bio" rows="3" maxlength="500" class="field p-4" placeholder="Parle un peu de toi, de ton style de jeu et de tes créneaux favoris..."></textarea>
+              <label for="edit-bio" class="label">Présentation <span class="text-fg-3">500 caractères max</span></label>
+              <textarea id="edit-bio" rows="3" maxlength="500" class="field" placeholder="Ton style de jeu, tes créneaux préférés"></textarea>
             </div>
           </div>
 
-          <div class="bg-mates-card border border-mates-border rounded-3xl p-6 sm:p-8 space-y-6">
-            <div class="flex items-center justify-between border-b border-mates-border pb-3">
-              <h2 class="text-lg font-bold text-white flex items-center gap-2"><i data-lucide="trophy" class="w-5 h-5 text-mates-green"></i><span>Mes sports & niveaux</span></h2>
-              <span class="text-xs text-slate-400 hidden sm:inline">Ajoute ou retire les sports que tu pratiques</span>
-            </div>
-            <div id="edit-sports-list" class="space-y-3"></div>
-            <div class="pt-2 flex flex-col sm:flex-row gap-3">
-              <select id="add-new-sport-select" class="field flex-grow"></select>
-              <select id="add-new-sport-level" class="field sm:w-48">
+          <div class="card p-6 sm:p-8 flex flex-col gap-6">
+            <h2 class="section-title">Sports et niveaux</h2>
+            <div id="edit-sports-list" class="flex flex-col gap-2"></div>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <select id="add-new-sport-select" class="field flex-grow" aria-label="Sport à ajouter"></select>
+              <select id="add-new-sport-level" class="field sm:w-48" aria-label="Niveau">
                 <option value="Débutant">Débutant</option>
                 <option value="Intermédiaire" selected>Intermédiaire</option>
                 <option value="Confirmé">Confirmé</option>
                 <option value="Expert">Expert</option>
               </select>
-              <button type="button" data-action="add-sport" class="btn-outline-neon py-2 px-5 text-sm"><i data-lucide="plus" class="w-4 h-4"></i><span>Ajouter</span></button>
+              <button type="button" data-action="add-sport" class="btn btn-secondary"><i data-lucide="plus" class="w-4 h-4"></i><span>Ajouter</span></button>
             </div>
           </div>
 
-          <div class="bg-mates-card border border-mates-border rounded-3xl p-6 sm:p-8 space-y-6">
-            <div class="border-b border-mates-border pb-3">
-              <h2 class="text-lg font-bold text-white flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-mates-green"></i><span>Mes disponibilités</span></h2>
-              <p class="text-xs text-slate-400 mt-1">Clique sur les créneaux pour les activer (vert) ou les désactiver (gris).</p>
+          <div class="card p-6 sm:p-8 flex flex-col gap-6">
+            <div>
+              <h2 class="section-title">Disponibilités</h2>
+              <p class="text-sm text-fg-2 mt-1">Clique sur un créneau pour l'activer ou le retirer</p>
             </div>
-            <div class="overflow-x-auto"><div id="edit-availability-matrix" class="min-w-[420px]"></div></div>
+            <div class="overflow-x-auto"><div id="edit-availability-matrix" class="min-w-[400px]"></div></div>
           </div>
 
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-            <button type="button" data-action="logout" class="w-full sm:w-auto px-6 py-3 rounded-xl border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 font-semibold text-sm transition-all flex items-center justify-center gap-2">
-              <i data-lucide="log-out" class="w-4 h-4"></i><span>Se déconnecter</span>
-            </button>
-            <button type="submit" class="w-full sm:w-auto btn-neon py-3 px-8 text-base shadow-xl"><i data-lucide="save" class="w-5 h-5"></i><span>Enregistrer mon profil</span></button>
+          <div class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4">
+            <button type="button" data-action="logout" class="btn btn-danger"><i data-lucide="log-out" class="w-4 h-4"></i><span>Se déconnecter</span></button>
+            <button type="submit" class="btn btn-lg btn-primary"><span>Enregistrer</span></button>
           </div>
         </form>
       </div>
     </section>
 
     <!-- 7. CONNEXION / INSCRIPTION -->
-    <section id="view-auth" class="page-view hidden py-16">
-      <div class="max-w-md mx-auto px-4">
-        <div class="bg-mates-card border border-mates-border rounded-3xl p-8 shadow-2xl space-y-6 relative overflow-hidden">
-          <div class="absolute -top-16 -right-16 w-36 h-36 bg-mates-green/20 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="text-center space-y-3">
-            <div class="inline-block p-2 bg-slate-900/60 rounded-2xl border border-mates-border">
-              <img src="/assets/logo-cropped.png" alt="Mates" class="h-10 w-auto object-contain mx-auto">
-            </div>
-            <h1 id="auth-title" class="text-2xl font-extrabold text-white">Connexion à Mates</h1>
-            <p id="auth-subtitle" class="text-xs text-slate-400">Rejoins les sportifs passionnés près de chez toi.</p>
-          </div>
+    <section id="view-auth" class="page-view hidden">
+      <div class="max-w-sm mx-auto px-4 py-16 flex flex-col gap-6">
+        <div class="flex flex-col gap-2">
+          <h1 id="auth-title" class="page-title">Connexion</h1>
+          <p id="auth-subtitle" class="text-[15px] text-fg-2">Rejoins les sportifs près de chez toi</p>
+        </div>
 
-          <form id="auth-form" class="space-y-4" novalidate>
-            <div id="auth-name-fields" class="hidden">
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label for="auth-firstname" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Prénom</label>
-                  <input type="text" id="auth-firstname" maxlength="50" autocomplete="given-name" class="field" placeholder="Lucas">
-                </div>
-                <div>
-                  <label for="auth-lastname" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Nom</label>
-                  <input type="text" id="auth-lastname" maxlength="50" autocomplete="family-name" class="field" placeholder="Simon">
-                </div>
-              </div>
+        <form id="auth-form" class="flex flex-col gap-4" novalidate>
+          <div id="auth-name-fields" class="hidden grid grid-cols-2 gap-3">
+            <div>
+              <label for="auth-firstname" class="label">Prénom</label>
+              <input type="text" id="auth-firstname" maxlength="50" autocomplete="given-name" class="field">
             </div>
             <div>
-              <label for="auth-email" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Email</label>
-              <input type="email" id="auth-email" required maxlength="254" autocomplete="email" class="field" placeholder="nom@exemple.com">
+              <label for="auth-lastname" class="label">Nom</label>
+              <input type="text" id="auth-lastname" maxlength="50" autocomplete="family-name" class="field">
             </div>
-            <div>
-              <label for="auth-password" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Mot de passe</label>
-              <input type="password" id="auth-password" required minlength="8" maxlength="128" autocomplete="current-password" class="field" placeholder="8 caractères minimum">
-            </div>
-            <p id="auth-error" class="hidden text-xs font-semibold text-rose-400" role="alert"></p>
-            <button type="submit" id="auth-submit-btn" class="w-full btn-neon py-3 text-sm font-bold shadow-lg mt-2"><span>Se connecter</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
-          </form>
-
-          <div class="text-center text-xs text-slate-400 pt-2 border-t border-mates-border">
-            <span id="auth-toggle-question">Pas encore de compte ?</span>
-            <button type="button" id="auth-toggle-btn" data-action="toggle-auth" class="text-mates-green font-bold hover:underline ml-1">S'inscrire</button>
           </div>
-
-          <div id="auth-demo-box" class="hidden p-3 bg-mates-cardElevated/50 rounded-xl border border-dashed border-mates-border text-center">
-            <button type="button" data-action="fill-demo" class="text-[11px] text-slate-400 hover:text-white flex items-center justify-center gap-1.5 mx-auto">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-mates-green"></i><span>Essayer avec le compte de démonstration</span>
-            </button>
+          <div>
+            <label for="auth-email" class="label">Email</label>
+            <input type="email" id="auth-email" required maxlength="254" autocomplete="email" class="field" placeholder="nom@exemple.com">
           </div>
+          <div>
+            <label for="auth-password" class="label">Mot de passe</label>
+            <input type="password" id="auth-password" required minlength="8" maxlength="128" autocomplete="current-password" class="field" placeholder="8 caractères minimum">
+          </div>
+          <p id="auth-error" class="hidden text-sm text-bad" role="alert"></p>
+          <button type="submit" id="auth-submit-btn" class="btn btn-lg btn-primary w-full mt-2">Se connecter</button>
+        </form>
+
+        <p class="text-sm text-fg-2">
+          <span id="auth-toggle-question">Pas encore de compte ?</span>
+          <button type="button" id="auth-toggle-btn" data-action="toggle-auth" class="text-fg underline underline-offset-4 decoration-fg-3 hover:decoration-fg ml-1">S'inscrire</button>
+        </p>
+
+        <div id="auth-demo-box" class="hidden pt-6 border-t border-mates-border">
+          <button type="button" data-action="fill-demo" class="btn btn-sm btn-ghost -ml-3"><i data-lucide="user-round" class="w-4 h-4"></i><span>Utiliser le compte de démonstration</span></button>
         </div>
       </div>
     </section>
 
     <!-- MATCHS OUVERTS -->
-    <section id="view-matches" class="page-view hidden py-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-mates-border pb-6">
+    <section id="view-matches" class="page-view hidden">
+      <div class="page py-10 flex flex-col gap-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div class="text-xs font-bold text-mates-green uppercase tracking-widest mb-1">Parties ouvertes</div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Matchs ouverts</h1>
-            <p class="text-slate-400 mt-2 text-sm">Il manque des joueurs pour compléter la partie. Réserve ta place et rejoins-les !</p>
+            <h1 class="page-title">Matchs ouverts</h1>
+            <p class="page-sub">Des parties où il manque encore des joueurs</p>
           </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <select id="matches-sport-filter" class="field w-auto py-2 text-xs"><option value="all">Tous les sports</option></select>
-            <button type="button" data-action="open-create-match" class="btn-neon text-xs py-2.5 px-4"><i data-lucide="plus" class="w-4 h-4"></i><span>Créer un match ouvert</span></button>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="matches-sport-filter" class="field w-auto" aria-label="Filtrer par sport"><option value="all">Tous les sports</option></select>
+            <button type="button" data-action="open-create-match" class="btn btn-primary"><i data-lucide="plus" class="w-4 h-4"></i><span>Créer un match</span></button>
           </div>
         </div>
-        <div id="open-matches-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        <div id="matches-empty-state" class="hidden text-center py-16 bg-mates-card/50 rounded-2xl border border-dashed border-mates-border p-8">
-          <i data-lucide="calendar-x" class="w-12 h-12 text-slate-500 mx-auto mb-3"></i>
-          <h3 class="text-lg font-bold text-white">Aucun match ouvert pour l'instant</h3>
-          <p class="text-sm text-slate-400 mt-1">Réserve un terrain et lance le tien !</p>
+        <div id="open-matches-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <div id="matches-empty-state" class="hidden card border-dashed p-12 text-center flex flex-col items-center gap-2">
+          <h3 class="text-lg font-medium text-fg">Aucun match ouvert pour l'instant</h3>
+          <p class="text-sm text-fg-2">Réserve un terrain et lance le tien</p>
         </div>
       </div>
     </section>
 
     <!-- INVITATIONS -->
-    <section id="view-inbox" class="page-view hidden py-10">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="border-b border-mates-border pb-6">
-          <div class="text-xs font-bold text-mates-green uppercase tracking-widest mb-1">Espace personnel</div>
-          <h1 class="text-3xl font-extrabold text-white">Mes invitations</h1>
-          <p class="text-slate-400 mt-2 text-sm">Les propositions de partie que tu as reçues et envoyées.</p>
+    <section id="view-inbox" class="page-view hidden">
+      <div class="page max-w-4xl py-10 flex flex-col gap-10">
+        <div>
+          <h1 class="page-title">Invitations</h1>
+          <p class="page-sub">Les parties qu'on t'a proposées et celles que tu as proposées</p>
         </div>
-        <div class="space-y-4">
-          <h2 class="text-lg font-bold text-white">Reçues</h2>
-          <div id="inbox-received" class="space-y-3"></div>
-        </div>
-        <div class="space-y-4">
-          <h2 class="text-lg font-bold text-white">Envoyées</h2>
-          <div id="inbox-sent" class="space-y-3"></div>
-        </div>
+        <section class="flex flex-col gap-4">
+          <h2 class="section-title">Reçues</h2>
+          <div id="inbox-received" class="flex flex-col gap-2"></div>
+        </section>
+        <section class="flex flex-col gap-4">
+          <h2 class="section-title">Envoyées</h2>
+          <div id="inbox-sent" class="flex flex-col gap-2"></div>
+        </section>
       </div>
     </section>
 
     <!-- ------------------------------------------------------------------
          SECTION BONUS : DOSSIER ANALYSE & UML (UE04 HELMo Christophe Thomas)
          ------------------------------------------------------------------ -->
-    <section id="view-uml" class="page-view hidden fade-in py-10">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="view-uml" class="page-view hidden py-10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         <div class="border-b border-mates-border pb-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">
+          <div class="meta mb-3">
             UE04 – Analyse Informatique • HELMo
           </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Dossier d'analyse UML du projet Mates</h1>
-          <p class="text-slate-300 mt-2 text-sm max-w-3xl">
+          <h1 class="text-3xl sm:text-4xl font-medium text-fg">Dossier d'analyse UML du projet Mates</h1>
+          <p class="text-fg-2 mt-2 text-sm max-w-3xl">
             Modélisation formelle du système Mates selon la méthodologie du cours : frontière du système, identification rigoureuse des acteurs primaires et secondaires, relations &laquo;include&raquo;, &laquo;extend&raquo; et fiches textuelles de cas d'utilisation.
           </p>
         </div>
 
         <!-- DIAGRAMME UML INTERACTIF -->
-        <div class="bg-mates-card border border-mates-border rounded-3xl p-6 sm:p-8 space-y-6">
+        <div class="bg-mates-card border border-mates-border rounded-2xl p-6 sm:p-8 space-y-6">
           <div class="flex items-center justify-between border-b border-mates-border pb-4">
             <div>
-              <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <i data-lucide="git-merge" class="w-5 h-5 text-mates-green"></i>
+              <h2 class="text-xl font-medium text-fg flex items-center gap-2">
+                <i data-lucide="git-merge" class="w-[18px] h-[18px] text-fg-3"></i>
                 <span>Diagramme de Cas d'Utilisation UML</span>
               </h2>
-              <p class="text-xs text-slate-400 mt-0.5">Conforme aux 6 étapes de la méthode et aux règles de validation (pas de flèches d'ordre, acteurs à l'extérieur, verbes à l'infinitif).</p>
+              <p class="text-xs text-fg-2 mt-0.5">Conforme aux 6 étapes de la méthode et aux règles de validation (pas de flèches d'ordre, acteurs à l'extérieur, verbes à l'infinitif).</p>
             </div>
-            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">UML 2.5 Standard</span>
+            <span class="meta">UML 2.5</span>
           </div>
 
           <!-- Rendu visuel du diagramme SVG -->
@@ -496,70 +432,70 @@
                 </marker>
                 <!-- Flèche triangle généralisation -->
                 <marker id="arrow-gen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-                  <polygon points="0 1, 9 5, 0 9" fill="#0B0F19" stroke="#94A3B8" stroke-width="1.5" />
+                  <polygon points="0 1, 9 5, 0 9" fill="#141415" stroke="#85858b" stroke-width="1.5" />
                 </marker>
               </defs>
 
               <!-- RECTANGLE SYSTÈME : MATES -->
-              <rect x="220" y="30" width="480" height="560" rx="16" fill="#131A29" stroke="#23304A" stroke-width="2" />
+              <rect x="220" y="30" width="480" height="560" rx="16" fill="#19191b" stroke="#29292c" stroke-width="2" />
               <text x="460" y="65" text-anchor="middle" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18">Système Mates</text>
 
               <!-- ACTEURS GAUCHE (PRIMAIRES) -->
               <!-- Joueur -->
               <g transform="translate(70, 240)">
                 <!-- Stickman Joueur -->
-                <circle cx="40" cy="20" r="14" fill="#1B2438" stroke="#C0FB18" stroke-width="2.5" />
+                <circle cx="40" cy="20" r="14" fill="#232325" stroke="#C0FB18" stroke-width="2.5" />
                 <line x1="40" y1="34" x2="40" y2="75" stroke="#C0FB18" stroke-width="2.5" />
                 <line x1="15" y1="50" x2="65" y2="50" stroke="#C0FB18" stroke-width="2.5" />
                 <line x1="40" y1="75" x2="20" y2="110" stroke="#C0FB18" stroke-width="2.5" />
                 <line x1="40" y1="75" x2="60" y2="110" stroke="#C0FB18" stroke-width="2.5" />
                 <text x="40" y="130" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-weight="700" font-size="14">Joueur</text>
-                <text x="40" y="146" text-anchor="middle" fill="#94A3B8" font-size="11">(Acteur principal)</text>
+                <text x="40" y="146" text-anchor="middle" fill="#a1a1a6" font-size="11">(Acteur principal)</text>
               </g>
 
               <!-- ACTEURS DROITE (SECONDAIRES / LOGICIELS EXTERNES) -->
               <!-- Service de paiement -->
               <g transform="translate(740, 160)">
-                <rect x="0" y="0" width="140" height="54" rx="8" fill="#1B2438" stroke="#3B82F6" stroke-width="2" />
-                <text x="70" y="22" text-anchor="middle" fill="#94A3B8" font-size="11">&laquo;système&raquo;</text>
+                <rect x="0" y="0" width="140" height="54" rx="8" fill="#232325" stroke="#3B82F6" stroke-width="2" />
+                <text x="70" y="22" text-anchor="middle" fill="#a1a1a6" font-size="11">&laquo;système&raquo;</text>
                 <text x="70" y="40" text-anchor="middle" fill="#FFFFFF" font-weight="700" font-size="12">Paiement</text>
               </g>
 
               <!-- Service de géolocalisation -->
               <g transform="translate(740, 360)">
-                <rect x="0" y="0" width="140" height="54" rx="8" fill="#1B2438" stroke="#3B82F6" stroke-width="2" />
-                <text x="70" y="22" text-anchor="middle" fill="#94A3B8" font-size="11">&laquo;système&raquo;</text>
+                <rect x="0" y="0" width="140" height="54" rx="8" fill="#232325" stroke="#3B82F6" stroke-width="2" />
+                <text x="70" y="22" text-anchor="middle" fill="#a1a1a6" font-size="11">&laquo;système&raquo;</text>
                 <text x="70" y="40" text-anchor="middle" fill="#FFFFFF" font-weight="700" font-size="12">Géolocalisation</text>
               </g>
 
               <!-- CAS D'UTILISATION (ELLIPSES) -->
               <!-- CU 1 : Rechercher un mate -->
               <g id="cu-search">
-                <ellipse cx="360" cy="120" rx="90" ry="26" fill="#1B2438" stroke="#C0FB18" stroke-width="1.8" />
+                <ellipse cx="360" cy="120" rx="90" ry="26" fill="#232325" stroke="#C0FB18" stroke-width="1.8" />
                 <text x="360" y="125" text-anchor="middle" fill="#FFFFFF" font-weight="600" font-size="13">Rechercher un mate</text>
               </g>
 
               <!-- CU 2 : Réserver un terrain -->
               <g id="cu-book">
-                <ellipse cx="360" cy="210" rx="90" ry="26" fill="#1B2438" stroke="#C0FB18" stroke-width="1.8" />
+                <ellipse cx="360" cy="210" rx="90" ry="26" fill="#232325" stroke="#C0FB18" stroke-width="1.8" />
                 <text x="360" y="215" text-anchor="middle" fill="#FFFFFF" font-weight="600" font-size="13">Réserver un terrain</text>
               </g>
 
               <!-- CU 3 : Rejoindre un match ouvert -->
               <g id="cu-join">
-                <ellipse cx="360" cy="300" rx="100" ry="26" fill="#1B2438" stroke="#C0FB18" stroke-width="1.8" />
+                <ellipse cx="360" cy="300" rx="100" ry="26" fill="#232325" stroke="#C0FB18" stroke-width="1.8" />
                 <text x="360" y="305" text-anchor="middle" fill="#FFFFFF" font-weight="600" font-size="13">Rejoindre un match</text>
               </g>
 
               <!-- CU 4 : Gérer son profil -->
               <g id="cu-profile">
-                <ellipse cx="360" cy="390" rx="90" ry="26" fill="#1B2438" stroke="#C0FB18" stroke-width="1.8" />
+                <ellipse cx="360" cy="390" rx="90" ry="26" fill="#232325" stroke="#C0FB18" stroke-width="1.8" />
                 <text x="360" y="395" text-anchor="middle" fill="#FFFFFF" font-weight="600" font-size="13">Gérer son profil</text>
               </g>
 
               <!-- CU 5 : Consulter le catalogue des sports -->
               <g id="cu-catalog">
-                <ellipse cx="360" cy="480" rx="105" ry="26" fill="#1B2438" stroke="#C0FB18" stroke-width="1.8" />
+                <ellipse cx="360" cy="480" rx="105" ry="26" fill="#232325" stroke="#C0FB18" stroke-width="1.8" />
                 <text x="360" y="485" text-anchor="middle" fill="#FFFFFF" font-weight="600" font-size="13">Consulter les sports</text>
               </g>
 
@@ -577,16 +513,16 @@
 
               <!-- CU ÉTENDU : Activer localisation GPS <<extend>> -->
               <g id="cu-gps">
-                <ellipse cx="570" cy="390" rx="85" ry="25" fill="#162238" stroke="#38BDF8" stroke-width="1.8" />
+                <ellipse cx="570" cy="390" rx="85" ry="25" fill="#1b1f27" stroke="#38BDF8" stroke-width="1.8" />
                 <text x="570" y="395" text-anchor="middle" fill="#38BDF8" font-weight="600" font-size="12">Détecter via GPS</text>
               </g>
 
               <!-- ASSOCIATIONS (Traits pleins Joueur -> CU) -->
-              <line x1="135" y1="280" x2="270" y2="120" stroke="#94A3B8" stroke-width="1.8" />
-              <line x1="135" y1="290" x2="270" y2="210" stroke="#94A3B8" stroke-width="1.8" />
-              <line x1="135" y1="300" x2="260" y2="300" stroke="#94A3B8" stroke-width="1.8" />
-              <line x1="135" y1="310" x2="270" y2="390" stroke="#94A3B8" stroke-width="1.8" />
-              <line x1="135" y1="320" x2="260" y2="480" stroke="#94A3B8" stroke-width="1.8" />
+              <line x1="135" y1="280" x2="270" y2="120" stroke="#85858b" stroke-width="1.8" />
+              <line x1="135" y1="290" x2="270" y2="210" stroke="#85858b" stroke-width="1.8" />
+              <line x1="135" y1="300" x2="260" y2="300" stroke="#85858b" stroke-width="1.8" />
+              <line x1="135" y1="310" x2="270" y2="390" stroke="#85858b" stroke-width="1.8" />
+              <line x1="135" y1="320" x2="260" y2="480" stroke="#85858b" stroke-width="1.8" />
 
               <!-- RELATIONS INCLUDE & EXTEND -->
               <!-- Réserver un terrain -> Payer <<include>> -->
@@ -613,8 +549,8 @@
 
         <!-- FICHES TEXTUELLES DE CAS D'UTILISATION (Conformes à la diapo 27 du cours de Christophe Thomas) -->
         <div class="space-y-6">
-          <h2 class="text-2xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="file-text" class="w-6 h-6 text-mates-green"></i>
+          <h2 class="text-2xl font-medium text-fg flex items-center gap-2">
+            <i data-lucide="file-text" class="w-[18px] h-[18px] text-fg-3"></i>
             <span>Fiches textuelles de cas d'utilisation</span>
           </h2>
 
@@ -623,34 +559,34 @@
             <!-- Fiche 1 : Réserver un terrain -->
             <div class="bg-mates-card border border-mates-border rounded-2xl p-6 space-y-4">
               <div class="flex items-center justify-between border-b border-mates-border pb-3">
-                <span class="text-xs font-bold text-mates-green uppercase">Cas d'utilisation 01</span>
-                <span class="text-xs font-mono text-slate-400">CU-01</span>
+                <span class="meta">Cas d'utilisation 01</span>
+                <span class="text-xs font-mono text-fg-2">CU-01</span>
               </div>
-              <h3 class="text-lg font-bold text-white">Réserver un terrain</h3>
+              <h3 class="text-lg font-medium text-fg">Réserver un terrain</h3>
               
-              <div class="text-xs space-y-3 text-slate-300">
+              <div class="text-xs space-y-3 text-fg-2">
                 <div>
-                  <strong class="text-white block mb-0.5">Événement déclencheur :</strong>
+                  <strong class="text-fg block mb-0.5">Événement déclencheur :</strong>
                   Le joueur souhaite planifier un match avec ses mates et bloquer un créneau dans un club.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Description de la fonctionnalité :</strong>
+                  <strong class="text-fg block mb-0.5">Description de la fonctionnalité :</strong>
                   Le joueur sélectionne un sport, consulte la disponibilité des terrains des clubs partenaires à la date et heure voulues, choisit son créneau puis procède au règlement en ligne.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Acteur(s) impliqué(s) :</strong>
+                  <strong class="text-fg block mb-0.5">Acteur(s) impliqué(s) :</strong>
                   Joueur (primaire), Système de paiement (secondaire).
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Préconditions :</strong>
+                  <strong class="text-fg block mb-0.5">Préconditions :</strong>
                   Le joueur dispose d'un profil actif et le club a des créneaux libres.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Postconditions :</strong>
+                  <strong class="text-fg block mb-0.5">Postconditions :</strong>
                   Le créneau est verrouillé, une notification de confirmation est transmise et le reçu est archivé.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Relations :</strong>
+                  <strong class="text-fg block mb-0.5">Relations :</strong>
                   Inclut obligatoirement &laquo;Payer la réservation&raquo; et peut être étendu par &laquo;Louer des raquettes&raquo; si le joueur n'a pas son matériel.
                 </div>
               </div>
@@ -659,30 +595,30 @@
             <!-- Fiche 2 : Rechercher un mate -->
             <div class="bg-mates-card border border-mates-border rounded-2xl p-6 space-y-4">
               <div class="flex items-center justify-between border-b border-mates-border pb-3">
-                <span class="text-xs font-bold text-mates-green uppercase">Cas d'utilisation 02</span>
-                <span class="text-xs font-mono text-slate-400">CU-02</span>
+                <span class="meta">Cas d'utilisation 02</span>
+                <span class="text-xs font-mono text-fg-2">CU-02</span>
               </div>
-              <h3 class="text-lg font-bold text-white">Rechercher un mate</h3>
+              <h3 class="text-lg font-medium text-fg">Rechercher un mate</h3>
               
-              <div class="text-xs space-y-3 text-slate-300">
+              <div class="text-xs space-y-3 text-fg-2">
                 <div>
-                  <strong class="text-white block mb-0.5">Événement déclencheur :</strong>
+                  <strong class="text-fg block mb-0.5">Événement déclencheur :</strong>
                   Le joueur a envie de pratiquer un sport mais manque de partenaires à son niveau.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Description de la fonctionnalité :</strong>
+                  <strong class="text-fg block mb-0.5">Description de la fonctionnalité :</strong>
                   Le joueur applique des filtres (sport parmi les 14, niveau de jeu souhaité, zone géographique / ville) pour afficher la liste des mates compatibles et consulter leurs fiches de profil public avec leurs disponibilités.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Acteur(s) impliqué(s) :</strong>
+                  <strong class="text-fg block mb-0.5">Acteur(s) impliqué(s) :</strong>
                   Joueur (primaire).
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Préconditions :</strong>
+                  <strong class="text-fg block mb-0.5">Préconditions :</strong>
                   Le système possède au moins un profil enregistré dans le périmètre demandé.
                 </div>
                 <div>
-                  <strong class="text-white block mb-0.5">Postconditions :</strong>
+                  <strong class="text-fg block mb-0.5">Postconditions :</strong>
                   Une sélection de profils compatibles est affichée avec la possibilité de leur proposer directement une partie.
                 </div>
               </div>
@@ -695,157 +631,115 @@
     </section>
   </main>
 
-  <!-- PIED DE PAGE -->
-  <footer class="bg-slate-950 border-t border-mates-border py-12 mt-16 text-slate-400 text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <div class="space-y-3 md:col-span-2">
-          <img src="/assets/logo-cropped.png" alt="Mates" class="h-7 w-auto object-contain">
-          <p class="text-xs text-slate-400 max-w-sm">
-            Mates est l'application tout-en-un qui facilite la pratique du sport amateur en groupe.
-            Projet réalisé dans le cadre de l'UE04 - Analyse Informatique (HELMo).
-          </p>
-          <div class="text-xs text-slate-500">Design vert inspiré du logo officiel • Palette Volt (#C0FB18)</div>
-        </div>
-        <div class="space-y-2">
-          <div class="text-xs font-bold text-white uppercase tracking-wider mb-2">Les écrans</div>
-          <ul class="space-y-1.5 text-xs">
-            <li><a href="#home" class="hover:text-mates-green transition-colors">1. Accueil</a></li>
-            <li><a href="#mates" class="hover:text-mates-green transition-colors">2. Recherche de mates</a></li>
-            <li><a href="#sports" class="hover:text-mates-green transition-colors">3. Liste des sports</a></li>
-            <li><a href="#sport/padel" class="hover:text-mates-green transition-colors">4. Page d'un sport (Padel)</a></li>
-            <li><a href="#mate/me" class="hover:text-mates-green transition-colors">5. Profil public</a></li>
-            <li><a href="#edit-profile" class="hover:text-mates-green transition-colors">6. Mon profil (édition)</a></li>
-            <li><a href="#auth" class="hover:text-mates-green transition-colors">7. Connexion / inscription</a></li>
-          </ul>
-        </div>
-        <div class="space-y-2">
-          <div class="text-xs font-bold text-white uppercase tracking-wider mb-2">Technique</div>
-          <ul class="space-y-1.5 text-xs">
-            <li><a href="#uml" class="text-mates-green hover:underline">📊 Diagramme UML & Fiches</a></li>
-            <li><span class="text-slate-400">API Node.js / Express</span></li>
-            <li><span class="text-slate-400">Base de données SQLite</span></li>
-            <li><span class="text-slate-500">HTML5 / Tailwind CSS / Vanilla JS</span></li>
-          </ul>
-        </div>
+  <footer class="border-t border-mates-border mt-16">
+    <div class="page py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <img src="/assets/logo-cropped.png" alt="Mates" class="h-6 w-auto self-start">
+        <p class="text-fg-2 max-w-sm">Le sport amateur en groupe, sans chercher des joueurs pendant des heures. Projet réalisé dans le cadre de l'UE04 Analyse informatique, HELMo</p>
       </div>
-      <div class="pt-8 border-t border-mates-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <div>&copy; 2026 Mates. Projet d'analyse informatique.</div>
-        <a href="#uml" class="hover:underline">Documentation UML</a>
+      <div class="flex flex-col gap-2">
+        <h2 class="text-fg mb-1">Écrans</h2>
+        <a href="#home" class="text-fg-2 hover:text-fg transition-colors">Accueil</a>
+        <a href="#mates" class="text-fg-2 hover:text-fg transition-colors">Recherche de mates</a>
+        <a href="#sports" class="text-fg-2 hover:text-fg transition-colors">Sports</a>
+        <a href="#sport/padel" class="text-fg-2 hover:text-fg transition-colors">Page d'un sport</a>
+        <a href="#mate/me" class="text-fg-2 hover:text-fg transition-colors">Profil public</a>
+        <a href="#edit-profile" class="text-fg-2 hover:text-fg transition-colors">Mon profil</a>
+        <a href="#auth" class="text-fg-2 hover:text-fg transition-colors">Connexion</a>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h2 class="text-fg mb-1">Projet</h2>
+        <a href="#uml" class="text-fg-2 hover:text-fg transition-colors">Diagramme UML et fiches</a>
+        <span class="text-fg-3">Node.js, Express, SQLite</span>
+        <span class="text-fg-3">HTML, Tailwind CSS, JavaScript</span>
       </div>
     </div>
+    <div class="page pb-8 meta">© 2026 Mates</div>
   </footer>
 
   <!-- MODALE : REJOINDRE UN MATCH -->
   <div id="join-match-modal" class="modal-overlay fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-match-title">
-    <div class="bg-mates-card border border-mates-border rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-5">
+    <div class="card bg-mates-card rounded-[20px] p-6 max-w-md w-full flex flex-col gap-6">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <div class="text-xs font-bold text-mates-green uppercase tracking-wider">Réservation</div>
-          <h3 id="modal-match-title" class="text-lg font-bold text-white mt-1">Rejoindre la partie</h3>
-          <p id="modal-match-details" class="text-xs text-slate-400 mt-1"></p>
+          <h3 id="modal-match-title" class="text-lg font-medium text-fg">Rejoindre la partie</h3>
+          <p id="modal-match-details" class="text-sm text-fg-2 mt-1"></p>
         </div>
-        <button type="button" data-action="close-modal" aria-label="Fermer" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button type="button" data-action="close-modal" aria-label="Fermer" class="icon-btn -mr-2 -mt-2"><i data-lucide="x" class="w-[18px] h-[18px]"></i></button>
       </div>
-      <div class="p-4 bg-mates-cardElevated rounded-2xl border border-mates-border space-y-2 text-sm">
-        <div class="flex justify-between text-slate-300"><span>Date & horaire :</span><strong id="modal-match-time" class="text-white"></strong></div>
-        <div class="flex justify-between text-slate-300"><span>Tarif par joueur :</span><strong id="modal-match-price" class="text-mates-green"></strong></div>
-        <div class="flex justify-between text-slate-300"><span>Paiement :</span><strong class="text-white">Sur place au club</strong></div>
-      </div>
-      <div class="flex gap-3">
-        <button type="button" data-action="close-modal" class="w-1/2 btn-outline-neon py-2.5 text-sm">Annuler</button>
-        <button type="button" data-action="confirm-join" class="w-1/2 btn-neon py-2.5 text-sm">Confirmer ma place</button>
+      <dl class="flex flex-col gap-3 text-sm">
+        <div class="flex justify-between gap-4"><dt class="text-fg-2">Quand</dt><dd id="modal-match-time" class="num text-fg text-right"></dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-fg-2">Places</dt><dd id="modal-match-seats" class="flex items-center gap-1"></dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-fg-2">Prix par joueur</dt><dd id="modal-match-price" class="num text-fg"></dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-fg-2">Paiement</dt><dd class="text-fg">Sur place au club</dd></div>
+      </dl>
+      <div class="flex gap-2 justify-end">
+        <button type="button" data-action="close-modal" class="btn btn-ghost">Annuler</button>
+        <button type="button" data-action="confirm-join" class="btn btn-primary">Confirmer ma place</button>
       </div>
     </div>
   </div>
 
   <!-- MODALE : PROPOSER UNE PARTIE -->
   <div id="propose-match-modal" class="modal-overlay fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="propose-modal-title">
-    <form id="propose-form" class="bg-mates-card border border-mates-border rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4" novalidate>
+    <form id="propose-form" class="card bg-mates-card rounded-[20px] p-6 max-w-md w-full flex flex-col gap-4" novalidate>
       <div class="flex items-start justify-between gap-4">
-        <div>
-          <div class="text-xs font-bold text-mates-green uppercase tracking-wider">Invitation sportive</div>
-          <h3 id="propose-modal-title" class="text-lg font-bold text-white mt-1">Proposer une partie</h3>
-        </div>
-        <button type="button" data-action="close-modal" aria-label="Fermer" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <h3 id="propose-modal-title" class="text-lg font-medium text-fg">Proposer une partie</h3>
+        <button type="button" data-action="close-modal" aria-label="Fermer" class="icon-btn -mr-2 -mt-2"><i data-lucide="x" class="w-[18px] h-[18px]"></i></button>
       </div>
       <div>
-        <label for="propose-sport" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Sport proposé</label>
+        <label for="propose-sport" class="label">Sport</label>
         <select id="propose-sport" class="field"></select>
       </div>
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <label for="propose-date" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Jour</label>
-          <input type="date" id="propose-date" class="field" required>
+          <label for="propose-date" class="label">Jour</label>
+          <input type="date" id="propose-date" class="field num" required>
         </div>
         <div>
-          <label for="propose-slot" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Créneau</label>
+          <label for="propose-slot" class="label">Créneau</label>
           <select id="propose-slot" class="field"></select>
         </div>
       </div>
-      <p id="propose-availability-hint" class="text-xs text-slate-400"></p>
+      <p id="propose-availability-hint" class="text-sm text-fg-2 min-h-5"></p>
       <div>
-        <label for="propose-message" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Message</label>
-        <textarea id="propose-message" rows="3" maxlength="500" class="field" placeholder="Salut ! Partant pour une partie ?"></textarea>
+        <label for="propose-message" class="label">Message</label>
+        <textarea id="propose-message" rows="3" maxlength="500" class="field" placeholder="Partant pour une partie ?"></textarea>
       </div>
-      <div class="flex gap-3">
-        <button type="button" data-action="close-modal" class="w-1/2 btn-outline-neon py-2.5 text-sm">Annuler</button>
-        <button type="submit" class="w-1/2 btn-neon py-2.5 text-sm">Envoyer la demande</button>
+      <div class="flex gap-2 justify-end pt-2">
+        <button type="button" data-action="close-modal" class="btn btn-ghost">Annuler</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
       </div>
     </form>
   </div>
 
   <!-- MODALE : CRÉER UN MATCH / RÉSERVER UN TERRAIN -->
   <div id="create-match-modal" class="modal-overlay fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="create-match-title">
-    <form id="create-match-form" class="bg-mates-card border border-mates-border rounded-3xl p-6 max-w-lg w-full shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto" novalidate>
+    <form id="create-match-form" class="card bg-mates-card rounded-[20px] p-6 max-w-lg w-full flex flex-col gap-4 max-h-[92vh] overflow-y-auto" novalidate>
       <div class="flex items-start justify-between gap-4">
         <div>
-          <div class="text-xs font-bold text-mates-green uppercase tracking-wider">Réserver un terrain</div>
-          <h3 id="create-match-title" class="text-lg font-bold text-white mt-1">Créer un match ouvert</h3>
+          <h3 id="create-match-title" class="text-lg font-medium text-fg">Réserver un terrain</h3>
+          <p class="text-sm text-fg-2 mt-1">Le match est publié et ouvert aux autres joueurs</p>
         </div>
-        <button type="button" data-action="close-modal" aria-label="Fermer" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button type="button" data-action="close-modal" aria-label="Fermer" class="icon-btn -mr-2 -mt-2"><i data-lucide="x" class="w-[18px] h-[18px]"></i></button>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div>
-          <label for="cm-sport" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Sport</label>
-          <select id="cm-sport" class="field"></select>
-        </div>
-        <div>
-          <label for="cm-venue" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Club</label>
-          <select id="cm-venue" class="field"></select>
-        </div>
-        <div>
-          <label for="cm-court" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Terrain</label>
-          <select id="cm-court" class="field"></select>
-        </div>
-        <div>
-          <label for="cm-date" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Date</label>
-          <input type="date" id="cm-date" class="field" required>
-        </div>
-        <div>
-          <label for="cm-duration" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Durée</label>
-          <select id="cm-duration" class="field"></select>
-        </div>
-        <div>
-          <label for="cm-time" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Heure de début</label>
-          <select id="cm-time" class="field"></select>
-        </div>
-        <div>
-          <label for="cm-slots" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Joueurs au total</label>
-          <input type="number" id="cm-slots" min="2" max="22" value="4" class="field">
-        </div>
-        <div>
-          <label for="cm-level" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Niveau attendu</label>
-          <select id="cm-level" class="field"></select>
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div><label for="cm-sport" class="label">Sport</label><select id="cm-sport" class="field"></select></div>
+        <div><label for="cm-venue" class="label">Club</label><select id="cm-venue" class="field"></select></div>
+        <div><label for="cm-court" class="label">Terrain</label><select id="cm-court" class="field"></select></div>
+        <div><label for="cm-date" class="label">Date</label><input type="date" id="cm-date" class="field num" required></div>
+        <div><label for="cm-duration" class="label">Durée</label><select id="cm-duration" class="field num"></select></div>
+        <div><label for="cm-time" class="label">Début</label><select id="cm-time" class="field num"></select></div>
+        <div><label for="cm-slots" class="label">Joueurs au total</label><input type="number" id="cm-slots" min="2" max="22" value="4" class="field num"></div>
+        <div><label for="cm-level" class="label">Niveau attendu</label><select id="cm-level" class="field"></select></div>
       </div>
-      <div class="p-3.5 bg-mates-cardElevated rounded-2xl border border-mates-border text-sm flex justify-between">
-        <span class="text-slate-300">Prix estimé par joueur :</span><strong id="cm-price" class="text-mates-green">–</strong>
+      <div class="flex justify-between items-baseline gap-4 py-4 border-y border-mates-border text-sm">
+        <span class="text-fg-2">Prix estimé par joueur</span><strong id="cm-price" class="num font-medium text-fg">–</strong>
       </div>
-      <p class="text-xs text-slate-500">Le terrain est bloqué à ton nom dès la création. Paiement sur place au club.</p>
-      <div class="flex gap-3">
-        <button type="button" data-action="close-modal" class="w-1/2 btn-outline-neon py-2.5 text-sm">Annuler</button>
-        <button type="submit" class="w-1/2 btn-neon py-2.5 text-sm">Réserver & publier</button>
+      <p class="text-xs text-fg-3">Le terrain est bloqué à ton nom dès la création. Paiement sur place au club.</p>
+      <div class="flex gap-2 justify-end">
+        <button type="button" data-action="close-modal" class="btn btn-ghost">Annuler</button>
+        <button type="submit" class="btn btn-primary">Réserver et publier</button>
       </div>
     </form>
   </div>

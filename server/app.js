@@ -555,7 +555,12 @@ function createApp(db, { trustProxy = false, demo = null } = {}) {
 
   // --------------------------------------------------------------- static
   app.get('/vendor/lucide.min.js', (_req, res) => res.sendFile(LUCIDE, { maxAge: '7d' }));
-  app.use(express.static(PUBLIC_DIR, { maxAge: '1h', index: 'index.html' }));
+  app.use(express.static(PUBLIC_DIR, {
+    index: 'index.html',
+    maxAge: '1d',
+    // HTML, JS and CSS are unversioned: revalidate (ETag) so a deploy shows up immediately.
+    setHeaders: (res, file) => { if (/\.(html|js|css)$/.test(file)) res.setHeader('Cache-Control', 'no-cache'); },
+  }));
 
   // ---------------------------------------------------------------- errors
   // eslint-disable-next-line no-unused-vars
